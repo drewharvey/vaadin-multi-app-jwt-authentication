@@ -1,5 +1,5 @@
 # Vaadin Multi-App JWT SSO Example
-A demo showing a custom JWT-based SSO approach for Vaadin apps, of different versions, running on the same domain. This demo includes a Vaadin 24 and Vaadin 8 app, both using the same JWT token for SSO. If your apps are all newer versions of Vaadin, there are much easier solutions (see below).
+A demo showing a custom JWT-based SSO approach for Vaadin apps, of different versions, running on the same domain. This demo includes a Vaadin 24 and Vaadin 8 app. If your apps are all newer versions of Vaadin, there are much easier solutions (see [Recommended SSO Alternatives](#recommended-sso-alternatives)).
 
 ## Disclaimer
 **This is not a production-ready solution.**  This is a simple example to demonstrate how to implement a custom JWT-based SSO for Vaadin apps. It is recommended to use a commercial SSO solution like [Vaadin SSO Kit](https://vaadin.com/docs/latest/tools/sso) for production.  This implementation has not been tested to the same degree as the official Vaadin SSO Kit, or other commercial SSO solutions.
@@ -27,7 +27,7 @@ We add a logout handler which is in charge of removing the JWT tokens, from brow
 ## Recommended SSO Alternatives
 As mentioned above, there are better solutions for SSO under most circumstances.
 
-### Vaadin 24+ Apps
+### Vaadin 23.2+ Apps
 If all your apps are Vaadin 24 or newer, you can use the [Vaadin SSO Kit](https://vaadin.com/docs/latest/tools/sso) to easily implement SSO.  The Vaadin SSO Kit is a commercial product, but it is a much more robust and secure solution than this example.
 
 You can also use Spring's `setStatelessAuthentication` API, having all apps share the same secret key.  This is a more secure solution than this example. See [Stateless Authentication with Spring Security](https://vaadin.com/docs/latest/hilla/guides/security/spring-stateless).
@@ -48,3 +48,5 @@ No, this approach only works with applications on the same domain.  Cookies can 
 ### Can I use this with applications on different ports?
 Yes, you can use this approach with applications on different ports.  Cookies can be shared between applications on different ports, as long as they are on the same domain. This demo uses ports 8080 and 8081.
 
+### We are migrating from Vaadin 8 to Vaadin 24.  Can we use this approach?
+Yes, this approach is perfect for migrating from Vaadin 8 to Vaadin 24.  You can have your users seamlessly navigate between the two apps, without having to log in again.
