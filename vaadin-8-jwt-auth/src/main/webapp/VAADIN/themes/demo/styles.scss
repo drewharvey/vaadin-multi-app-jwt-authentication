@@ -1,0 +1,109 @@
+@import "../valo/valo.scss";
+@include valo;
+
+html {
+  --border: solid 1px rgba(26,57,96,0.1);
+  --sidebar-text-color: rgba(24, 39, 57, 0.94);
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-size: 1rem;
+  line-height: 1.625;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.main-layout {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+}
+
+.sidebar {
+  width: 256px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  background: #f4f5f7;
+  color: var(--sidebar-text-color);
+  border-right: var(--border);
+  padding: 0 10px 10px 10px;
+}
+
+.app-heading,
+.view-heading {
+  width: 100%;
+  height: 57px;
+  align-content: center;
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: #253245;
+  padding-left: 8px;
+}
+
+.view-heading {
+  border-bottom: var(--border);
+  padding-left: 20px;
+}
+
+.view-title {
+  margin-left: 20px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  text-align: left;
+  box-shadow: none;
+  cursor: pointer;
+  color: var(--sidebar-text-color);
+  padding-left: 8px;
+}
+
+.nav-button .v-icon {
+  color: hsla(214, 43%, 19%, 0.6);
+}
+
+.nav-button.active,
+.nav-button.active .v-icon {
+  color: hsla(214, 100%, 49%, 0.76);
+  background-color: rgb(220, 231, 249)
+}
+
+.user {
+  margin-top: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.user img {
+  border-radius: 100px;
+}
+
+.user .v-menubar {
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.content {
+  width: 100%;
+  flex-grow:1;
+  overflow: hidden;
+}

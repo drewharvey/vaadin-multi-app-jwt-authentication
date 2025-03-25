@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.example.application</groupId>
+	<artifactId>v8-spring-sec-jwt-test</artifactId>
+	<name>v8-spring-sec-jwt-test</name>
+	<version>1.0-SNAPSHOT</version>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+<!--		<version>3.2.9</version>-->
+		<version>2.7.0</version>
+		<relativePath/>
+	</parent>
+
+	<properties>
+		<vaadin.version>8.27.0</vaadin.version>
+<!--		<vaadin-spring.version>4.0.0</vaadin-spring.version>-->
+		<vaadin-spring.version>3.0.0</vaadin-spring.version>
+		<vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
+
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
+		<vaadin.widgetset.mode>local</vaadin.widgetset.mode>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>vaadin-addons</id>
+			<url>https://maven.vaadin.com/vaadin-addons</url>
+		</repository>
+		<repository>
+			<id>vaadin-pre</id>
+			<url>https://maven.vaadin.com/vaadin-prereleases</url>
+		</repository>
+		<repository>
+			<id>vaadin-snapshot</id>
+			<url>https://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>vaadin-pre</id>
+			<url>https://maven.vaadin.com/vaadin-prereleases</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>vaadin-snapshot</id>
+			<url>https://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.vaadin</groupId>
+				<artifactId>vaadin-bom</artifactId>
+				<version>${vaadin.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<!-- Vaadin 8 dependencies -->
+<!--		<dependency>-->
+<!--			<groupId>com.vaadin</groupId>-->
+<!--			<artifactId>vaadin-server</artifactId>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>com.vaadin</groupId>-->
+<!--			<artifactId>vaadin-push</artifactId>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>com.vaadin</groupId>-->
+<!--			<artifactId>vaadin-client-compiled</artifactId>-->
+<!--		</dependency>-->
+		<dependency>
+			<groupId>com.vaadin</groupId>
+			<artifactId>vaadin-themes</artifactId>
+		</dependency>
+
+		<!-- Spring Boot dependencies -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.vaadin</groupId>
+			<artifactId>vaadin-spring-boot-starter</artifactId>
+			<version>${vaadin-spring.version}</version><!--$NO-MVN-MAN-VER$ -->
+		</dependency>
+		<dependency>
+			<groupId>com.vaadin</groupId>
+			<artifactId>vaadin-spring-boot</artifactId>
+			<version>${vaadin-spring.version}</version><!--$NO-MVN-MAN-VER$ -->
+		</dependency>
+		<dependency>
+			<groupId>com.vaadin</groupId>
+			<artifactId>vaadin-spring</artifactId>
+			<version>${vaadin-spring.version}</version><!--$NO-MVN-MAN-VER$ -->
+		</dependency>
+		<dependency>
+			<groupId>com.vaadin</groupId>
+			<artifactId>vaadin-spring-security</artifactId>
+			<version>${vaadin-spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- jwt deps -->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-api</artifactId>
+			<version>0.11.5</version>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-impl</artifactId>
+			<version>0.11.5</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-jackson</artifactId>
+			<version>0.11.5</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- Testing -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.8.1</version>
+		</dependency>
+
+	</dependencies>
+
+<!--	<build>-->
+<!--		<plugins>-->
+<!--			<plugin>-->
+<!--				<groupId>org.springframework.boot</groupId>-->
+<!--				<artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--			</plugin>-->
+
+<!--			<plugin>-->
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-compiler-plugin</artifactId>-->
+<!--				<configuration>-->
+<!--					<source>${java.version}</source>-->
+<!--					<target>${java.version}</target>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
+<!--		</plugins>-->
+<!--	</build>-->
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.vaadin</groupId>
+				<artifactId>vaadin-maven-plugin</artifactId>
+				<version>${vaadin.plugin.version}</version>
+				<executions>
+					<!-- You are free to mark this as permanently ignored in Eclipse -->
+					<execution>
+						<configuration>
+							<!-- if you don't specify any modules, the plugin will find them -->
+						</configuration>
+						<goals>
+							<goal>resources</goal>
+							<goal>update-widgetset</goal>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<!-- 			<plugin> -->
+			<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
+			<!-- 				<artifactId>maven-enforcer-plugin</artifactId> -->
+			<!-- 				<executions> -->
+			<!-- 					<execution> -->
+			<!-- 						<id>enforce-no-snapshots</id> -->
+			<!-- 						<goals> -->
+			<!-- 							<goal>enforce</goal> -->
+			<!-- 						</goals> -->
+			<!-- 						<configuration> -->
+			<!-- 							<rules> -->
+			<!-- 								<requireReleaseDeps> -->
+			<!-- 									<message>No Snapshots Allowed!</message> -->
+			<!-- 								</requireReleaseDeps> -->
+			<!-- 							</rules> -->
+			<!-- 							<fail>true</fail> -->
+			<!-- 						</configuration> -->
+			<!-- 					</execution> -->
+			<!-- 				</executions> -->
+			<!-- 			</plugin> -->
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<!-- Vaadin pre-release repositories -->
+			<id>vaadin-prerelease</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<repositories>
+				<repository>
+					<id>vaadin-prereleases</id>
+					<url>http://maven.vaadin.com/vaadin-prereleases</url>
+				</repository>
+				<repository>
+					<id>vaadin-snapshots</id>
+					<url>https://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+			</repositories>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>vaadin-prereleases</id>
+					<url>http://maven.vaadin.com/vaadin-prereleases</url>
+				</pluginRepository>
+				<pluginRepository>
+					<id>vaadin-snapshots</id>
+					<url>https://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</pluginRepository>
+			</pluginRepositories>
+		</profile>
+	</profiles>
+</project>
